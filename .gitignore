@@ -1,0 +1,17 @@
+npm_modules/
+dist/
+.env
+__pycache__/
+*.pyc
+.vscode/
+node_modules/
+.DS_Store
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+__pycache__/
+*.pyc
+.vscode/
+.env
+.idea/
+*.iml
