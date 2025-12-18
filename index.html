@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova | Premium Electronics Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#111111',
+                            gray: '#f5f5f7', // Apple-style light gray
+                            accent: '#2563eb', // High-trust Blue
+                            accentHover: '#1d4ed8',
+                            danger: '#ef4444' // For sales/urgency
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+        /* Hide scrollbar for horizontal scrolling areas */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-brand-black bg-white antialiased">
+
+    <div class="bg-brand-black text-white text-xs font-medium py-2 text-center tracking-wide">
+        FLASH SALE: Get <span class="text-yellow-400 font-bold">20% OFF</span> all smartphones until midnight. Use code: <span class="border-b border-yellow-400">TECH20</span>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-2xl font-bold tracking-tighter">Tech<span class="text-brand-accent">Nova</span>.</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors">Smartphones</a>
+                    <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors">Laptops</a>
+                    <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors">Audio</a>
+                    <a href="#" class="text-red-600 font-medium transition-colors">Sale</a>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <button class="text-gray-500 hover:text-brand-black">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                    <button class="relative text-gray-500 hover:text-brand-black group">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span class="absolute -top-1 -right-1 bg-brand-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <div class="relative w-full h-[20vh] overflow-hidden bg-brand-black" id="carousel-slides">
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Tech Banner 1" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" alt="Tech Banner 2" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=2070&auto=format&fit=crop" alt="Tech Banner 3" class="w-full h-full object-cover">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('#carousel-slides > div');
+            let currentSlide = 0;
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 4000);
+        });
+    </script>
+
+
+    <section class="border-y border-gray-100 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <div class="w-10 h-10 mx-auto bg-white border border-gray-200 flex items-center justify-center rounded-full text-brand-accent">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-sm">Fast Delivery</h3>
+                    <p class="text-xs text-gray-500">Same day dispatch</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-10 h-10 mx-auto bg-white border border-gray-200 flex items-center justify-center rounded-full text-brand-accent">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-sm">2 Year Warranty</h3>
+                    <p class="text-xs text-gray-500">On all electronics</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-10 h-10 mx-auto bg-white border border-gray-200 flex items-center justify-center rounded-full text-brand-accent">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-sm">Secure Payment</h3>
+                    <p class="text-xs text-gray-500">Encrypted transactions</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-10 h-10 mx-auto bg-white border border-gray-200 flex items-center justify-center rounded-full text-brand-accent">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-sm">Easy Returns</h3>
+                    <p class="text-xs text-gray-500">30-day policy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
+                <p class="text-xs md:text-sm text-gray-500">Highest rated tech this week.</p>
+            </div>
+            <a href="#" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors">
+                View All <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+            
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <span class="absolute top-2 left-2 bg-brand-black text-white text-[10px] font-bold px-1.5 py-0.5 uppercase">Sale</span>
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Headphones">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">Sony WH-1000XM5</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">Noise Cancelling / 30h Bat</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$348</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Laptop">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">MacBook Air M2</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">Midnight / 256GB SSD</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$1,099</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <span class="absolute top-2 left-2 bg-brand-danger text-white text-[10px] font-bold px-1.5 py-0.5 uppercase">Hot</span>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Smartwatch">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">Apple Watch Ultra</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">Titanium Case / 49mm</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$799</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Speaker">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">JBL Flip 6</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">Waterproof / Black</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$99</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1610945415295-d96bf067d9e4?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Samsung">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">Samsung S24 Ultra</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">AI Camera / 512GB</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$1,199</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <span class="absolute top-2 left-2 bg-gray-100 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 uppercase border border-gray-200">Refurb</span>
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="iPad">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">iPad Air 5</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">M1 Chip / Space Gray</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$559</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="Mouse">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">MX Master 3S</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">Ergonomic / Silent</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$99</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-colors">
+                <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1564466021189-e99b53a5b3f6?q=80&w=600&auto=format&fit=crop" class="w-3/4 object-contain group-hover:scale-105 transition-transform duration-300" alt="GoPro">
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-semibold text-sm md:text-base leading-tight truncate">GoPro Hero 12</h3>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">5.3K Video / Waterproof</p>
+                    <div class="flex items-center justify-between pt-2">
+                        <span class="font-bold text-sm md:text-lg text-brand-black">$399</span>
+                        <button class="bg-white border border-gray-200 text-brand-black p-1.5 hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="mt-12 text-center">
+            <button class="bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors">
+                View All
+            </button>
+        </div>
+    </section>
+
+    <section class="bg-brand-black text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 relative">
+               <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1000&auto=format&fit=crop" alt="VR Headset" class="rounded-sm border border-gray-700 w-full object-cover h-[400px]">
+               <div class="absolute -bottom-6 -right-6 bg-brand-accent text-white p-6 w-40 text-center rounded-none hidden md:block">
+                    <p class="text-3xl font-bold">30%</p>
+                    <p class="text-sm font-medium uppercase">Off VR Gear</p>
+               </div>
+            </div>
+            <div class="order-1 md:order-2 space-y-6">
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight">Immersion like <br>never before.</h2>
+                <p class="text-gray-400 text-lg">Step into the future with our next-gen VR headsets. Ultra-low latency, 4K resolution per eye, and wireless freedom.</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center"><svg class="w-5 h-5 text-brand-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 2-Year Official Warranty</li>
+                    <li class="flex items-center"><svg class="w-5 h-5 text-brand-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Includes Half-Life: Alyx</li>
+                </ul>
+                <button class="mt-4 bg-white text-brand-black px-10 py-4 font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+                    Explore VR
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-12">Trusted by 50,000+ Tech Enthusiasts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-600 mb-6 italic">"The delivery was insanely fast. Ordered the S24 Ultra yesterday, and it arrived this morning. Packaging was secure and pristine."</p>
+                    <div class="font-bold text-sm text-brand-black">— Alex Chen, Developer</div>
+                </div>
+                <div class="bg-gray-50 p-8 border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-600 mb-6 italic">"Love the clean design of the site and how easy it is to find specs. Prices are competitive with Amazon, but the support is real humans."</p>
+                    <div class="font-bold text-sm text-brand-black">— Sarah Jenkins, Designer</div>
+                </div>
+                <div class="bg-gray-50 p-8 border border-gray-100">
+                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-gray-600 mb-6 italic">"Returned a defective headset with zero hassle. They sent a replacement before I even shipped the old one back. Top tier."</p>
+                    <div class="font-bold text-sm text-brand-black">— Mike Ross, Gamer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-brand-accent text-white text-center">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Don't Miss the Next Drop</h2>
+            <p class="mb-8 opacity-90">Join our newsletter and get <span class="font-bold underline">10% OFF</span> your first order plus early access to flash sales.</p>
+            <form class="flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 text-brand-black focus:outline-none focus:ring-2 focus:ring-black border-none" required>
+                <button type="submit" class="bg-brand-black px-8 py-4 font-bold uppercase tracking-wider hover:bg-gray-900 transition-colors">
+                    Subscribe
+                </button>
+            </form>
+            <p class="text-xs mt-4 opacity-70">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <footer class="bg-white pt-16 pb-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-brand-black">Smartphones</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Laptops</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Audio</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Wearables</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-brand-black">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Order Status</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Returns</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-brand-black">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Stores</a></li>
+                        <li><a href="#" class="hover:text-brand-black">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-brand-black"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-brand-black"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.072 3.252.148 4.771 1.691 4.919 4.919.06 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 TechNova Inc. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-brand-black">Privacy</a>
+                    <a href="#" class="hover:text-brand-black">Terms</a>
+                    <a href="#" class="hover:text-brand-black">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
