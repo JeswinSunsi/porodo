@@ -149,6 +149,7 @@
             </div>
 
             <button 
+              @click="proceedToCheckout"
               :disabled="cartStore.items.length === 0"
               class="w-full bg-brand-black text-white h-12 font-bold uppercase tracking-wider hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -176,8 +177,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router'
 
 const cartStore = useCartStore()
+const router = useRouter()
 const discountCode = ref('')
 
 function formatPrice(price) {
@@ -197,5 +200,9 @@ function applyDiscount() {
     alert(`Discount code "${discountCode.value}" applied!`)
     discountCode.value = ''
   }
+}
+
+function proceedToCheckout() {
+  router.push('/checkout')
 }
 </script>
