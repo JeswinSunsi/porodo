@@ -37,7 +37,7 @@
 <body class="font-sans text-brand-black bg-white antialiased">
 
     <div class="bg-brand-black text-white text-xs font-medium py-2 text-center tracking-wide">
-        FLASH SALE: Get <span class="text-yellow-400 font-bold">20% OFF</span> all smartphones until midnight. Use code: <span class="border-b border-yellow-400">TECH20</span>
+        FLASH SALE: Get <span class="text-yellow-400 font-bold">20% OFF</span> all smartphones. Use code: <span class="border-b border-yellow-400">TECH20</span>
     </div>
 
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
@@ -81,6 +81,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Hero Carousel
             const slides = document.querySelectorAll('#carousel-slides > div');
             let currentSlide = 0;
             setInterval(() => {
@@ -90,6 +91,32 @@
                 slides[currentSlide].classList.remove('opacity-0');
                 slides[currentSlide].classList.add('opacity-100');
             }, 4000);
+
+            // Testimonial Carousel
+            const testimonialSlides = document.querySelectorAll('#testimonial-carousel .relative.h-64 > div');
+            const indicators = document.querySelectorAll('#testimonial-carousel button');
+            let currentTestimonial = 0;
+            
+            setInterval(() => {
+                // Hide current
+                testimonialSlides[currentTestimonial].classList.remove('opacity-100');
+                testimonialSlides[currentTestimonial].classList.add('opacity-0');
+                if(indicators[currentTestimonial]) {
+                     indicators[currentTestimonial].classList.remove('bg-brand-accent');
+                     indicators[currentTestimonial].classList.add('bg-gray-300');
+                }
+
+                // Move to next
+                currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+
+                // Show next
+                testimonialSlides[currentTestimonial].classList.remove('opacity-0');
+                testimonialSlides[currentTestimonial].classList.add('opacity-100');
+                if(indicators[currentTestimonial]) {
+                    indicators[currentTestimonial].classList.remove('bg-gray-300');
+                    indicators[currentTestimonial].classList.add('bg-brand-accent');
+                }
+            }, 5000);
         });
     </script>
 
@@ -308,21 +335,39 @@
     <section class="py-20 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-2xl font-bold mb-12">Trusted by 50,000+ Tech Enthusiasts</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"The delivery was insanely fast. Ordered the S24 Ultra yesterday, and it arrived this morning. Packaging was secure and pristine."</p>
-                    <div class="font-bold text-sm text-brand-black">— Alex Chen, Developer</div>
+            
+            <!-- Testimonial Carousel -->
+            <div class="relative w-full max-w-3xl mx-auto" id="testimonial-carousel">
+                <div class="relative h-64"> <!-- Fixed height container -->
+                    
+                    <!-- Slide 1 -->
+                    <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 flex flex-col justify-center items-center bg-gray-50 p-8 border border-gray-100 rounded-lg">
+                        <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                        <p class="text-gray-600 mb-6 italic text-lg">"The delivery was insanely fast. Ordered the S24 Ultra yesterday, and it arrived this morning. Packaging was secure and pristine."</p>
+                        <div class="font-bold text-sm text-brand-black">— Alex Chen, Developer</div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 flex flex-col justify-center items-center bg-gray-50 p-8 border border-gray-100 rounded-lg">
+                        <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                        <p class="text-gray-600 mb-6 italic text-lg">"Love the clean design of the site and how easy it is to find specs. Prices are competitive with Amazon, but the support is real humans."</p>
+                        <div class="font-bold text-sm text-brand-black">— Sarah Jenkins, Designer</div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 flex flex-col justify-center items-center bg-gray-50 p-8 border border-gray-100 rounded-lg">
+                        <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
+                        <p class="text-gray-600 mb-6 italic text-lg">"Best tech store I've found. The VR headset recommendation was spot on. Truly immersive experience!"</p>
+                        <div class="font-bold text-sm text-brand-black">— Michael Ross, Gamer</div>
+                    </div>
+
                 </div>
-                <div class="bg-gray-50 p-8 border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"Love the clean design of the site and how easy it is to find specs. Prices are competitive with Amazon, but the support is real humans."</p>
-                    <div class="font-bold text-sm text-brand-black">— Sarah Jenkins, Designer</div>
-                </div>
-                <div class="bg-gray-50 p-8 border border-gray-100">
-                    <div class="flex justify-center text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"Returned a defective headset with zero hassle. They sent a replacement before I even shipped the old one back. Top tier."</p>
-                    <div class="font-bold text-sm text-brand-black">— Mike Ross, Gamer</div>
+                
+                <!-- Indicators -->
+                <div class="flex justify-center space-x-2 mt-6">
+                    <button class="w-2 h-2 rounded-full bg-brand-accent transition-colors duration-300"></button>
+                    <button class="w-2 h-2 rounded-full bg-gray-300 transition-colors duration-300"></button>
+                    <button class="w-2 h-2 rounded-full bg-gray-300 transition-colors duration-300"></button>
                 </div>
             </div>
         </div>
