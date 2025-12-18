@@ -162,12 +162,12 @@
           <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
           <p class="text-xs md:text-sm text-gray-500">Highest rated tech this week.</p>
         </div>
-        <a href="#" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
+        <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
           View All 
           <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
-        </a>
+        </router-link>
       </div>
 
       <div v-if="trendingLoading" class="text-center py-12 text-gray-500">Loading products...</div>
@@ -181,9 +181,9 @@
       </div>
       
       <div class="mt-8 text-center">
-        <button class="bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
+        <router-link to="/products" class="inline-block bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
           View All Products
-        </button>
+        </router-link>
       </div>
     </section>
   </template>

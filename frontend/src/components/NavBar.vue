@@ -9,6 +9,7 @@
         </router-link>
 
         <div class="hidden md:flex space-x-8">
+          <router-link to="/products" class="text-gray-600 hover:text-brand-black font-medium transition-colors hover:scale-105 transform duration-200">All Products</router-link>
           <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors hover:scale-105 transform duration-200">Smartphones</a>
           <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors hover:scale-105 transform duration-200">Laptops</a>
           <a href="#" class="text-gray-600 hover:text-brand-black font-medium transition-colors hover:scale-105 transform duration-200">Audio</a>
