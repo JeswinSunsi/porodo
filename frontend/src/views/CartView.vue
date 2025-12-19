@@ -181,26 +181,39 @@
     </div>
 
     <!-- Removal Confirmation Modal -->
-    <div v-if="showRemoveModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-      <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 transform transition-all">
-        <div class="text-center">
-          <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
-            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    <div v-if="showRemoveModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-black/60 backdrop-blur-sm transition-all duration-300">
+      <div class="bg-white shadow-2xl max-w-sm w-full transform transition-all border border-gray-100 relative overflow-hidden">
+        <!-- Decorative top bar -->
+        <div class="h-1.5 w-full bg-brand-black"></div>
+        
+        <div class="p-8 text-center">
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-gray-50 mb-6 border border-gray-100">
+            <svg class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </div>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">Remove Item?</h3>
-          <p class="text-sm text-gray-500 mb-6">
+          
+          <h3 class="text-xl font-bold text-brand-black mb-2 tracking-tight">Remove Item?</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">
             Are you sure you want to remove this item from your cart?
-            <br><br>
-            <span class="font-bold text-brand-black">Wait!</span> Use code <span class="font-bold text-green-600 bg-green-50 px-2 py-1 rounded">SAVE5</span> for 5% off if you complete your purchase now!
           </p>
-          <div class="flex justify-center space-x-3">
-            <button @click="cancelRemove" class="px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 font-medium transition-colors">
+
+          <!-- Promo Box -->
+          <div class="bg-gray-50 border border-dashed border-gray-300 p-5 mb-8 relative">
+            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white px-3 text-[10px] font-bold text-brand-black uppercase tracking-widest border border-gray-100 shadow-sm">
+              Special Offer
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed pt-1">
+              <span class="font-bold text-brand-black">Wait!</span> Use code <span class="font-mono font-bold text-blue-500 bg-white border border-gray-200 px-2 py-1 mx-1 select-all shadow-sm">SAVE5</span> for 5% off if you complete your purchase now!
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <button @click="cancelRemove" class="w-full py-3.5 bg-brand-black text-white font-bold uppercase tracking-wider hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 hover:shadow-xl">
               Keep Item
             </button>
-            <button @click="confirmRemove" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 font-medium transition-colors">
-              Remove
+            <button @click="confirmRemove" class="w-full py-2 text-xs font-bold text-gray-400 uppercase tracking-wider hover:text-red-600 transition-colors">
+              Remove Item
             </button>
           </div>
         </div>
