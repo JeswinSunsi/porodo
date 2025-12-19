@@ -48,7 +48,8 @@ export const useCartStore = defineStore('cart', () => {
         price: product.price,
         quantity: quantity,
         image_url: product.image_url,
-        selected_color: selectedColor
+        selected_color: selectedColor,
+        tag: product.badges && product.badges.length > 0 ? product.badges[0] : null
       })
     }
   }

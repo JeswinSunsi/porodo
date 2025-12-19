@@ -10,8 +10,7 @@
           
           <!-- Header -->
           <div class="hidden sm:grid grid-cols-12 text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-200 pb-2">
-            <div class="col-span-6">Product</div>
-            <div class="col-span-3 text-center">Quantity</div>
+            <div class="col-span-9">Product</div>
             <div class="col-span-3 text-right">Total</div>
           </div>
 
@@ -29,30 +28,28 @@
             :key="item.product_id"
             class="group bg-white p-3 border border-gray-100 hover:border-gray-200 transition-all duration-200"
           >
-            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-              <div class="col-span-6 flex items-center space-x-4">
-                <div class="bg-gray-50 w-16 h-16 flex-shrink-0 flex items-center justify-center border border-gray-100">
-                  <img :src="item.image_url" :alt="item.name" class="w-12 h-12 object-contain mix-blend-multiply">
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
+              <div class="col-span-9 flex items-start space-x-4">
+                <div class="bg-gray-50 w-24 h-24 flex-shrink-0 flex items-center justify-center border border-gray-100">
+                  <img :src="item.image_url" :alt="item.name" class="w-20 h-20 object-contain mix-blend-multiply">
                 </div>
-                <div>
-                  <h3 class="font-bold text-brand-black text-sm sm:text-base">{{ item.name }}</h3>
-                  <p class="text-xs text-gray-500 mb-1">Color: {{ item.selected_color || 'Default' }}</p>
+                <div class="flex flex-col space-y-2 w-full">
+                  <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-brand-black text-sm sm:text-base pr-2">{{ item.name }}</h3>
+                    <span v-if="item.tag" class="text-[10px] font-bold px-1.5 py-0.5 uppercase bg-orange-100 text-orange-600 rounded whitespace-nowrap">{{ item.tag }}</span>
+                  </div>
+                  <p class="text-xs text-gray-500">Color: {{ item.selected_color || 'Default' }}</p>
                   <p class="text-sm font-medium text-brand-black sm:hidden">${{ formatPrice(item.price) }}</p>
-                  <button @click="removeItem(item.product_id)" class="text-xs text-red-500 hover:text-red-600 font-medium underline mt-1">
-                    Remove
-                  </button>
+                  
+                  <div class="flex items-center border border-gray-300 h-8 w-24">
+                    <button @click="updateQuantity(item.product_id, -1)" class="w-8 h-full text-gray-600 hover:bg-gray-100 transition">-</button>
+                    <input type="number" :value="item.quantity" class="w-8 h-full text-center border-none focus:ring-0 font-bold text-sm bg-transparent p-0" readonly>
+                    <button @click="updateQuantity(item.product_id, 1)" class="w-8 h-full text-gray-600 hover:bg-gray-100 transition">+</button>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-span-3 flex justify-center">
-                <div class="flex items-center border border-gray-300 h-8 w-24">
-                  <button @click="updateQuantity(item.product_id, -1)" class="w-8 h-full text-gray-600 hover:bg-gray-100 transition">-</button>
-                  <input type="number" :value="item.quantity" class="w-8 h-full text-center border-none focus:ring-0 font-bold text-sm bg-transparent p-0" readonly>
-                  <button @click="updateQuantity(item.product_id, 1)" class="w-8 h-full text-gray-600 hover:bg-gray-100 transition">+</button>
-                </div>
-              </div>
-
-              <div class="hidden sm:block col-span-3 text-right">
+              <div class="hidden sm:block col-span-3 text-right pt-2">
                 <span class="font-bold text-lg">${{ formatPrice(item.price * item.quantity) }}</span>
               </div>
             </div>
@@ -171,6 +168,33 @@
         </div>
       </div>
     </div>
+
+    <!-- Removal Confirmation Modal -->
+    <div v-if="showRemoveModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+      <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 transform transition-all">
+        <div class="text-center">
+          <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Remove Item?</h3>
+          <p class="text-sm text-gray-500 mb-6">
+            Are you sure you want to remove this item from your cart?
+            <br><br>
+            <span class="font-bold text-brand-black">Wait!</span> Use code <span class="font-bold text-green-600 bg-green-50 px-2 py-1 rounded">SAVE5</span> for 5% off if you complete your purchase now!
+          </p>
+          <div class="flex justify-center space-x-3">
+            <button @click="cancelRemove" class="px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 font-medium transition-colors">
+              Keep Item
+            </button>
+            <button @click="confirmRemove" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 font-medium transition-colors">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -182,17 +206,36 @@ import { useRouter } from 'vue-router'
 const cartStore = useCartStore()
 const router = useRouter()
 const discountCode = ref('')
+const showRemoveModal = ref(false)
+const itemToRemoveId = ref(null)
 
 function formatPrice(price) {
   return price.toFixed(2)
 }
 
 function updateQuantity(productId, change) {
-  cartStore.updateQuantity(productId, change)
+  const item = cartStore.items.find(i => i.product_id === productId)
+  if (!item) return
+
+  if (item.quantity === 1 && change === -1) {
+    itemToRemoveId.value = productId
+    showRemoveModal.value = true
+  } else {
+    cartStore.updateQuantity(productId, change)
+  }
 }
 
-function removeItem(productId) {
-  cartStore.removeItem(productId)
+function confirmRemove() {
+  if (itemToRemoveId.value) {
+    cartStore.removeItem(itemToRemoveId.value)
+    showRemoveModal.value = false
+    itemToRemoveId.value = null
+  }
+}
+
+function cancelRemove() {
+  showRemoveModal.value = false
+  itemToRemoveId.value = null
 }
 
 function applyDiscount() {

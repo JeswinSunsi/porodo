@@ -8,9 +8,9 @@
         <!-- Checkout Forms -->
         <div class="lg:col-span-8 space-y-8">
           
-          <!-- Shipping Information -->
+          <!-- Delivery Information -->
           <div class="bg-white p-6 border border-gray-100">
-            <h2 class="text-xl font-bold text-brand-black mb-6">Shipping Information</h2>
+            <h2 class="text-xl font-bold text-brand-black mb-6">Delivery Information</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="md:col-span-2">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -25,15 +25,23 @@
                 <input v-model="form.city" type="text" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
-                <input v-model="form.zip" type="text" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
+                <label class="block text-sm font-medium text-gray-700 mb-1">House Number</label>
+                <input v-model="form.houseNumber" type="text" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
               </div>
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                <select v-model="form.country" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="UK">United Kingdom</option>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Governorate</label>
+                <select v-model="form.governorate" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
+                  <option value="Muscat">Muscat</option>
+                  <option value="Dhofar">Dhofar</option>
+                  <option value="Musandam">Musandam</option>
+                  <option value="Al Buraimi">Al Buraimi</option>
+                  <option value="Al Dakhiliyah">Al Dakhiliyah</option>
+                  <option value="Al Batinah North">Al Batinah North</option>
+                  <option value="Al Batinah South">Al Batinah South</option>
+                  <option value="Al Zahirah">Al Zahirah</option>
+                  <option value="Al Sharqiyah North">Al Sharqiyah North</option>
+                  <option value="Al Sharqiyah South">Al Sharqiyah South</option>
+                  <option value="Al Wusta">Al Wusta</option>
                 </select>
               </div>
             </div>
@@ -42,21 +50,9 @@
           <!-- Payment Information -->
           <div class="bg-white p-6 border border-gray-100">
             <h2 class="text-xl font-bold text-brand-black mb-6">Payment Details</h2>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                <input v-model="form.cardNumber" type="text" placeholder="0000 0000 0000 0000" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
-              </div>
-              <div class="grid grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
-                  <input v-model="form.expiry" type="text" placeholder="MM/YY" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
-                  <input v-model="form.cvc" type="text" placeholder="123" class="w-full bg-gray-50 border border-gray-200 p-3 focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition">
-                </div>
-              </div>
+            <div class="bg-gray-50 p-4 border border-gray-200 rounded text-center">
+              <p class="text-brand-black font-medium">All payments are Cash on Delivery only.</p>
+              <p class="text-sm text-gray-500 mt-1">Please have the exact amount ready upon delivery.</p>
             </div>
           </div>
 
@@ -138,11 +134,8 @@ const form = reactive({
   name: '',
   address: '',
   city: '',
-  zip: '',
-  country: 'US',
-  cardNumber: '',
-  expiry: '',
-  cvc: ''
+  houseNumber: '',
+  governorate: 'Muscat'
 })
 
 function formatPrice(price) {
@@ -153,7 +146,7 @@ async function placeOrder() {
   if (cartStore.items.length === 0) return
   
   // Basic validation
-  if (!form.name || !form.address || !form.city || !form.zip || !form.cardNumber || !form.expiry || !form.cvc) {
+  if (!form.name || !form.address || !form.city || !form.houseNumber || !form.governorate) {
     alert('Please fill in all fields')
     return
   }
@@ -163,7 +156,7 @@ async function placeOrder() {
   // Simulate API call
   setTimeout(() => {
     processing.value = false
-    alert('Order placed successfully!')
+    alert('Order placed successfully! Payment will be collected on delivery.')
     cartStore.clearCart()
     router.push('/')
   }, 2000)
