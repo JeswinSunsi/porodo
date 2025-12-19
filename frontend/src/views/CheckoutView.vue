@@ -51,8 +51,8 @@
           <div class="bg-white p-6 border border-gray-100">
             <h2 class="text-xl font-bold text-brand-black mb-6">Payment Details</h2>
             <div class="bg-gray-50 p-4 border border-gray-200 rounded text-center">
-              <p class="text-brand-black font-medium">All payments are Cash on Delivery only.</p>
-              <p class="text-sm text-gray-500 mt-1">Please have the exact amount ready upon delivery.</p>
+              <p class="text-brand-black font-medium">Pay with Cash or Card on Delivery.</p>
+              <p class="text-sm text-gray-500 mt-1">You can pay using cash or card when your order arrives.</p>
             </div>
           </div>
 
