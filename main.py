@@ -235,6 +235,13 @@ def get_home_products():
     trending_ids = [1, 2, 3, 4, 5, 6, 7, 8]
     return [p for p in products_db if p.id in trending_ids]
 
+@app.get("/home/trending-products-2", response_model=List[Product], tags=["Home"])
+def get_home_trending_products_2():
+    """Returns the products displayed in the second 'Trending Now' section of the home page."""
+    # Just picking some products for the second section
+    trending_ids = [2, 4, 6, 8, 1, 3] 
+    return [p for p in products_db if p.id in trending_ids]
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

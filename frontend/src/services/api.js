@@ -23,6 +23,11 @@ export const getHomeProducts = async () => {
   return response.data
 }
 
+export const getHomeTrendingProducts2 = async () => {
+  const response = await api.get('/home/trending-products-2')
+  return response.data
+}
+
 // Cart
 export const getCart = async () => {
   const response = await api.get('/cart')
