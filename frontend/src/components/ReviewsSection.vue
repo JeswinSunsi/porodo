@@ -1,7 +1,7 @@
 <template>
   <section class="py-12 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold mb-12">Trusted by 50,000+ Tech Enthusiasts</h2>
+      <h2 class="text-2xl font-bold mb-12">What our customers say</h2>
       <div v-if="loading" class="text-gray-500">Loading reviews...</div>
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div 
