@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Sony WH-1000XM5",
+    "price": 348.00,
+    "original_price": 399.00,
+    "short_description": "Noise Cancelling / 30h Bat",
+    "description": "Experience the next level of silence. The WH-1000XM5 headphones feature our best noise canceling yet, with two processors controlling 8 microphones for unprecedented noise reduction and exceptional call quality.",
+    "image_url": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=600&auto=format&fit=crop",
+    "category": "Audio",
+    "specs": {
+      "Battery Life": "30 Hours (NC On)",
+      "Weight": "250g",
+      "Bluetooth": "Version 5.2",
+      "Charging": "USB-C (3min = 3hr)",
+      "Driver Unit": "30mm",
+      "Noise Canceling": "Active (Auto NC)"
+    },
+    "colors": ["Black", "Gray", "Blue"],
+    "badges": ["Sale"]
+  },
+  {
+    "id": 2,
+    "name": "MacBook Air M2",
+    "price": 1099.00,
+    "short_description": "Midnight / 256GB SSD",
+    "description": "The MacBook Air M2 is a supercharged laptop with the M2 chip, featuring a stunning Liquid Retina display, 1080p FaceTime HD camera, and all-day battery life.",
+    "image_url": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=600&auto=format&fit=crop",
+    "category": "Laptops",
+    "specs": {
+      "Processor": "Apple M2 chip",
+      "Memory": "8GB Unified Memory",
+      "Storage": "256GB SSD",
+      "Display": "13.6-inch Liquid Retina",
+      "Battery": "Up to 18 hours"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Apple Watch Ultra",
+    "price": 799.00,
+    "short_description": "Titanium Case / 49mm",
+    "description": "The most rugged and capable Apple Watch ever, designed for exploration, adventure, and endurance. Features a 49mm aerospace-grade titanium case.",
+    "image_url": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop",
+    "category": "Wearables",
+    "badges": ["Hot"],
+    "specs": {
+      "Case Material": "Titanium",
+      "Case Size": "49mm",
+      "Water Resistance": "100m",
+      "Battery": "Up to 36 hours",
+      "Connectivity": "GPS + Cellular"
+    }
+  },
+  {
+    "id": 4,
+    "name": "JBL Flip 6",
+    "price": 99.00,
+    "short_description": "Waterproof / Black",
+    "description": "Your adventure companion. The JBL Flip 6 delivers powerful JBL Original Pro Sound with exceptional clarity thanks to its 2-way speaker system.",
+    "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
+    "category": "Audio",
+    "specs": {
+      "Output Power": "20W RMS",
+      "Waterproof": "IP67",
+      "Battery Life": "12 Hours",
+      "Bluetooth": "5.1",
+      "Weight": "0.55 kg"
+    }
+  },
+  {
+    "id": 5,
+    "name": "iPhone 15 Pro Max",
+    "price": 1199.00,
+    "short_description": "Titanium / 256GB",
+    "description": "iPhone 15 Pro Max. Forged in titanium. Featuring the groundbreaking A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.",
+    "image_url": "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=600&auto=format&fit=crop",
+    "category": "Smartphones",
+    "specs": {
+      "Display": "6.7-inch Super Retina XDR",
+      "Processor": "A17 Pro chip",
+      "Camera": "48MP Main | Ultra Wide | Telephoto",
+      "Material": "Titanium",
+      "Connector": "USB-C"
+    }
+  },
+  {
+    "id": 6,
+    "name": "iPad Air 5",
+    "price": 559.00,
+    "short_description": "M1 Chip / Space Gray",
+    "description": "Light. Bright. Full of might. Turbocharged by the Apple M1 chip. 12MP Ultra Wide front camera with Center Stage. Blazing-fast 5G.",
+    "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop",
+    "category": "Tablets",
+    "badges": ["Refurb"],
+    "specs": {
+      "Chip": "Apple M1",
+      "Display": "10.9-inch Liquid Retina",
+      "Camera": "12MP Wide back | 12MP Ultra Wide front",
+      "Touch ID": "Top Button",
+      "Connector": "USB-C"
+    }
+  },
+  {
+    "id": 7,
+    "name": "MX Master 3S",
+    "price": 99.00,
+    "short_description": "Ergonomic / Silent",
+    "description": "Meet MX Master 3S – an iconic mouse remastered. Feel every moment of your workflow with even more precision, tactility, and performance, thanks to Quiet Clicks and an 8,000 DPI track-on-glass sensor.",
+    "image_url": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=600&auto=format&fit=crop",
+    "category": "Accessories",
+    "specs": {
+      "DPI": "8000",
+      "Buttons": "7",
+      "Battery": "Rechargeable Li-Po (500 mAh)",
+      "Connectivity": "Bluetooth / Logi Bolt",
+      "Sensor": "Darkfield high precision"
+    }
+  },
+  {
+    "id": 8,
+    "name": "GoPro Hero 12",
+    "price": 399.00,
+    "short_description": "5.3K Video / Waterproof",
+    "description": "Incredible image quality, even better HyperSmooth video stabilization and a huge boost in battery life come together in the latest and greatest GoPro—HERO12 Black.",
+    "image_url": "https://images.unsplash.com/photo-1564466021189-e99b53a5b3f6?q=80&w=600&auto=format&fit=crop",
+    "category": "Cameras",
+    "specs": {
+      "Video": "5.3K60 / 4K120",
+      "Photo": "27MP",
+      "Stabilization": "HyperSmooth 6.0",
+      "Waterproof": "33ft (10m)",
+      "Battery": "Enduro Battery"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Universal Headphone Stand",
+    "price": 49.00,
+    "short_description": "Aluminum Silver",
+    "description": "A sleek and sturdy aluminum headphone stand to keep your desk organized and your headphones safe. Universal design fits most headphones.",
+    "image_url": "https://images.unsplash.com/photo-1623998021646-4c31cc9b4743?q=80&w=200&auto=format&fit=crop",
+    "category": "Accessories",
+    "specs": {
+      "Material": "Aluminum Alloy",
+      "Height": "25cm",
+      "Base": "Anti-slip silicone",
+      "Weight": "200g",
+      "Color": "Silver"
+    }
+  }
+]

@@ -79,6 +79,12 @@
               </div>
             </div>
 
+            <!-- Promo Code -->
+            <div class="mb-4 border-b border-gray-200 pb-4">
+               <label class="block text-xs font-medium text-gray-700 mb-1">Promo Code</label>
+               <input v-model="form.promoCode" type="text" class="w-full bg-gray-50 border border-gray-200 p-2 text-sm focus:ring-1 focus:ring-brand-black focus:border-brand-black outline-none transition" placeholder="Enter code">
+            </div>
+
             <div class="space-y-2 text-sm text-gray-600 mb-4">
               <div class="flex justify-between">
                 <span>Subtotal</span>
@@ -135,7 +141,8 @@ const form = reactive({
   address: '',
   city: '',
   houseNumber: '',
-  governorate: 'Muscat'
+  governorate: 'Muscat',
+  promoCode: ''
 })
 
 function formatPrice(price) {
@@ -153,12 +160,42 @@ async function placeOrder() {
 
   processing.value = true
   
-  // Simulate API call
-  setTimeout(() => {
-    processing.value = false
+  try {
+    const orderData = {
+      name: form.name,
+      address: form.address,
+      city: form.city,
+      houseNumber: form.houseNumber,
+      governorate: form.governorate,
+      promo_code: form.promoCode,
+      items: cartStore.items.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+        selected_color: item.selected_color
+      })),
+      total: cartStore.total
+    }
+
+    const response = await fetch('http://localhost:8000/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderData),
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to place order')
+    }
+    
     alert('Order placed successfully! Payment will be collected on delivery.')
     cartStore.clearCart()
     router.push('/')
-  }, 2000)
+  } catch (error) {
+    console.error('Error placing order:', error)
+    alert('Failed to place order. Please try again.')
+  } finally {
+    processing.value = false
+  }
 }
 </script>
