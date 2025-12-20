@@ -18,6 +18,16 @@ export const getProduct = async (id) => {
   return response.data
 }
 
+export const searchProducts = async (query, page = 1, limit = 10) => {
+  const response = await api.get(`/search?q=${encodeURIComponent(query)}&page=${page}&limit=${limit}`)
+  return response.data
+}
+
+export const getSearchSuggestions = async (query) => {
+  const response = await api.get(`/search/suggestions?q=${encodeURIComponent(query)}`)
+  return response.data
+}
+
 export const getHomeProducts = async () => {
   const response = await api.get('/home/products')
   return response.data
@@ -25,12 +35,6 @@ export const getHomeProducts = async () => {
 
 export const getHomeTrendingProducts2 = async () => {
   const response = await api.get('/home/trending-products-2')
-  return response.data
-}
-
-// Cart
-export const getCart = async () => {
-  const response = await api.get('/cart')
   return response.data
 }
 

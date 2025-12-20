@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { getCart } from '@/services/api'
 import { useToastStore } from './toast'
 
 export const useCartStore = defineStore('cart', () => {
@@ -35,18 +34,6 @@ export const useCartStore = defineStore('cart', () => {
   const hasDiscount = computed(() => {
     return items.value.some(item => item.quantity >= 2)
   })
-
-  async function fetchCart() {
-    loading.value = true
-    try {
-      const cartData = await getCart()
-      items.value = cartData
-    } catch (error) {
-      console.error('Failed to fetch cart:', error)
-    } finally {
-      loading.value = false
-    }
-  }
 
   function addItem(product, quantity = 1, selectedColor = null) {
     const wasEmpty = items.value.length === 0
@@ -112,7 +99,6 @@ export const useCartStore = defineStore('cart', () => {
     tax,
     total,
     hasDiscount,
-    fetchCart,
     addItem,
     updateQuantity,
     removeItem,

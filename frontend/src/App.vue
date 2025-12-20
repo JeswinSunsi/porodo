@@ -29,7 +29,6 @@ function closeSpecialOffer() {
 }
 
 onMounted(async () => {
-  await cartStore.fetchCart()
   try {
     const promotions = await getPromotions()
     if (promotions.length > 0) {

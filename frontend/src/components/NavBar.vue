@@ -17,11 +17,11 @@
         </div>
 
         <div class="flex items-center space-x-6">
-          <button class="text-gray-500 hover:text-brand-black transition-transform hover:scale-110 duration-200">
+          <router-link to="/search" class="text-gray-500 hover:text-brand-black transition-transform hover:scale-110 duration-200">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-          </button>
+          </router-link>
           <router-link to="/cart" class="relative text-gray-500 hover:text-brand-black group transition-transform hover:scale-110 duration-200">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>

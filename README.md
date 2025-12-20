@@ -87,7 +87,6 @@ ChanceCom/
 | GET | `/products` | Get all products |
 | GET | `/products/{id}` | Get product by ID |
 | GET | `/home/products` | Get trending products |
-| GET | `/cart` | Get cart items |
 | GET | `/reviews` | Get customer reviews |
 | GET | `/promotions` | Get active promotions |
 
