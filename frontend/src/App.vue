@@ -7,7 +7,7 @@
     </main>
     <FooterSection />
     <ToastNotification />
-    <SpecialOfferModal :isOpen="showSpecialOffer" @close="closeSpecialOffer" />
+    <SpecialOfferModal :isOpen="cartStore.showSpecialOffer" @close="closeSpecialOffer" />
   </div>
 </template>
 
@@ -23,24 +23,9 @@ import { getPromotions } from '@/services/api'
 
 const cartStore = useCartStore()
 const activePromotion = ref(null)
-const showSpecialOffer = ref(false)
-const offerShown = ref(false)
-
-// Watch for cart changes to trigger the modal
-import { watch } from 'vue'
-watch(() => cartStore.itemCount, (newCount, oldCount) => {
-  if (newCount > 0 && !offerShown.value && !cartStore.hasDiscount) {
-    // Only show if it's the first time adding items (or going from 0 to >0)
-    // But the requirement says "after the first product is added".
-    // If the user refreshes, we might not want to show it again if they already saw it.
-    // For now, let's just show it once per session/load.
-    showSpecialOffer.value = true
-    offerShown.value = true
-  }
-})
 
 function closeSpecialOffer() {
-  showSpecialOffer.value = false
+  cartStore.showSpecialOffer = false
 }
 
 onMounted(async () => {

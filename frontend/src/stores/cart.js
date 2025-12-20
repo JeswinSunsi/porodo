@@ -6,6 +6,7 @@ import { useToastStore } from './toast'
 export const useCartStore = defineStore('cart', () => {
   const items = ref([])
   const loading = ref(false)
+  const showSpecialOffer = ref(false)
   const toastStore = useToastStore()
 
   const itemCount = computed(() => {
@@ -72,6 +73,7 @@ export const useCartStore = defineStore('cart', () => {
       })
 
       if (wasEmpty) {
+        showSpecialOffer.value = true
         toastStore.showToast(`${product.name} added! Buy 2 to save 10%!`, 'success', 5000)
       } else {
         toastStore.showToast(`${product.name} added to cart`, 'success')
@@ -114,6 +116,7 @@ export const useCartStore = defineStore('cart', () => {
     addItem,
     updateQuantity,
     removeItem,
-    clearCart
+    clearCart,
+    showSpecialOffer
   }
 })
