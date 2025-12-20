@@ -70,6 +70,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useCartStore } from '@/stores/cart'
 import { getHomeProducts, getHomeTrendingProducts2 } from '@/services/api'
 import HeroCarousel from '@/components/HeroCarousel.vue'
 import FeatureBar from '@/components/FeatureBar.vue'
@@ -78,6 +79,7 @@ import VRPromoSection from '@/components/VRPromoSection.vue'
 import ReviewsSection from '@/components/ReviewsSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
 
+const cartStore = useCartStore()
 const products = ref([])
 const loading = ref(true)
 const products2 = ref([])

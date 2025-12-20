@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-brand-black text-white py-20 overflow-hidden">
+  <section class="bg-brand-black text-white py-10 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div class="order-2 md:order-1 relative">
         <img 

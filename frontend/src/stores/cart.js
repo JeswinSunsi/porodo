@@ -1,17 +1,26 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getCart } from '@/services/api'
+import { useToastStore } from './toast'
 
 export const useCartStore = defineStore('cart', () => {
   const items = ref([])
   const loading = ref(false)
+  const toastStore = useToastStore()
 
   const itemCount = computed(() => {
     return items.value.reduce((total, item) => total + item.quantity, 0)
   })
 
   const subtotal = computed(() => {
-    return items.value.reduce((total, item) => total + (item.price * item.quantity), 0)
+    return items.value.reduce((total, item) => {
+      let itemTotal = item.price * item.quantity
+      // Discount logic: 10% off if quantity >= 2
+      if (item.quantity >= 2) {
+        itemTotal = itemTotal * 0.9
+      }
+      return total + itemTotal
+    }, 0)
   })
 
   const tax = computed(() => {
@@ -20,6 +29,10 @@ export const useCartStore = defineStore('cart', () => {
 
   const total = computed(() => {
     return subtotal.value + tax.value
+  })
+
+  const hasDiscount = computed(() => {
+    return items.value.some(item => item.quantity >= 2)
   })
 
   async function fetchCart() {
@@ -35,12 +48,18 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function addItem(product, quantity = 1, selectedColor = null) {
+    const wasEmpty = items.value.length === 0
     const existingItem = items.value.find(
       item => item.product_id === product.id && item.selected_color === selectedColor
     )
 
     if (existingItem) {
       existingItem.quantity += quantity
+      if (existingItem.quantity === 2) {
+        toastStore.showToast(`Discount Unlocked! 10% off ${product.name}s!`, 'success')
+      } else {
+        toastStore.showToast(`${product.name} added to cart`, 'success')
+      }
     } else {
       items.value.push({
         product_id: product.id,
@@ -51,13 +70,24 @@ export const useCartStore = defineStore('cart', () => {
         selected_color: selectedColor,
         tag: product.badges && product.badges.length > 0 ? product.badges[0] : null
       })
+
+      if (wasEmpty) {
+        toastStore.showToast(`${product.name} added! Buy 2 to save 10%!`, 'success', 5000)
+      } else {
+        toastStore.showToast(`${product.name} added to cart`, 'success')
+      }
     }
   }
 
   function updateQuantity(productId, change) {
     const item = items.value.find(item => item.product_id === productId)
     if (item) {
+      const oldQuantity = item.quantity
       item.quantity = Math.max(1, item.quantity + change)
+
+      if (oldQuantity < 2 && item.quantity >= 2) {
+        toastStore.showToast(`Discount Unlocked! 10% off ${item.name}s!`, 'success')
+      }
     }
   }
 
@@ -79,6 +109,7 @@ export const useCartStore = defineStore('cart', () => {
     subtotal,
     tax,
     total,
+    hasDiscount,
     fetchCart,
     addItem,
     updateQuantity,

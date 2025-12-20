@@ -4,7 +4,7 @@
       <div class="flex flex-col md:flex-row gap-8">
         
         <!-- Sidebar Filters -->
-        <aside class="w-full md:w-64 flex-shrink-0">
+        <aside class="w-full md:w-64 flex-shrink-0" v-show="showFilters">
           <div class="sticky top-24 space-y-8">
             
             <!-- Categories Filter -->
@@ -63,19 +63,31 @@
               <p class="text-gray-500 text-sm mt-1">Showing {{ filteredProducts.length }} results</p>
             </div>
             
-            <div class="flex items-center space-x-2">
-              <label for="sort" class="text-sm text-gray-600">Sort by:</label>
-              <select 
-                id="sort" 
-                v-model="sortBy"
-                class="border-gray-300 rounded-sm text-sm focus:ring-brand-black focus:border-brand-black py-1.5 pl-3 pr-8"
+            <div class="flex flex-wrap items-center gap-4">
+              <button 
+                @click="showFilters = !showFilters"
+                class="flex items-center space-x-2 text-sm font-medium text-brand-black border border-gray-300 rounded-sm px-4 py-2 hover:bg-gray-50"
               >
-                <option value="featured">Featured</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="name-asc">Name: A-Z</option>
-                <option value="name-desc">Name: Z-A</option>
-              </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+                <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
+              </button>
+
+              <div class="flex items-center space-x-2">
+                <label for="sort" class="text-sm text-gray-600">Sort by:</label>
+                <select 
+                  id="sort" 
+                  v-model="sortBy"
+                  class="border-gray-300 rounded-sm text-sm focus:ring-brand-black focus:border-brand-black py-1.5 pl-3 pr-8"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="name-asc">Name: A-Z</option>
+                  <option value="name-desc">Name: Z-A</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -96,7 +108,12 @@
             </button>
           </div>
 
-          <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div v-else :class="[
+            'grid gap-3 md:gap-6',
+            showFilters 
+              ? 'grid-cols-2 lg:grid-cols-3' 
+              : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          ]">
             <ProductCard 
               v-for="product in filteredProducts" 
               :key="product.id" 
@@ -117,6 +134,7 @@ import ProductCard from '@/components/ProductCard.vue'
 
 const products = ref([])
 const loading = ref(true)
+const showFilters = ref(false)
 const selectedCategories = ref([])
 const minPrice = ref(null)
 const maxPrice = ref(null)
