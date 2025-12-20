@@ -1,11 +1,11 @@
 <template>
   <div>
     <HeroCarousel />
-    <FeatureBar />
+    <FeatureBar v-animate-on-scroll />
     
     <!-- Trending Products Section -->
     <section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
-      <div class="flex justify-between items-end mb-8">
+      <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
           <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
           <p class="text-xs md:text-sm text-gray-500">Highest rated tech this week.</p>
@@ -22,24 +22,25 @@
       
       <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
         <ProductCard 
-          v-for="product in products" 
+          v-for="(product, index) in products" 
           :key="product.id" 
           :product="product"
+          v-animate-on-scroll="{ delay: index * 100 }"
         />
       </div>
       
-      <div class="mt-8 text-center">
+      <div class="mt-8 text-center" v-animate-on-scroll>
         <router-link to="/products" class="inline-block bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
           View All Products
         </router-link>
       </div>
     </section>
 
-    <VRPromoSection />
+    <VRPromoSection v-animate-on-scroll />
 
     <!-- Second Trending Products Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
-      <div class="flex justify-between items-end mb-8">
+      <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
           <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
           <p class="text-xs md:text-sm text-gray-500">More top picks for you.</p>
@@ -56,15 +57,16 @@
       
       <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
         <ProductCard 
-          v-for="product in products2" 
+          v-for="(product, index) in products2" 
           :key="product.id" 
           :product="product"
+          v-animate-on-scroll="{ delay: index * 100 }"
         />
       </div>
     </section>
 
-    <ReviewsSection />
-    <NewsletterSection />
+    <ReviewsSection v-animate-on-scroll />
+    <NewsletterSection v-animate-on-scroll />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <router-link 
     :to="`/product/${product.id}`" 
-    class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-all duration-300 hover:shadow-xl hover:-translate-y-1 block"
+    class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-all duration-300 ease-luxe hover:shadow-xl hover:-translate-y-1 block"
   >
     <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
       <span 

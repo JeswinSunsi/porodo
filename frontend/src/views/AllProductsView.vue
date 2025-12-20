@@ -115,9 +115,10 @@
               : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
           ]">
             <ProductCard 
-              v-for="product in filteredProducts" 
+              v-for="(product, index) in filteredProducts" 
               :key="product.id" 
               :product="product"
+              v-animate-on-scroll="{ delay: (index % 5) * 100 }"
             />
           </div>
 

@@ -8,7 +8,7 @@
     leave-to-class="opacity-0"
   >
     <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-black/80 backdrop-blur-sm transition-all duration-300">
-      <div class="bg-white shadow-2xl max-w-md w-full transform transition-all relative border-x border-b border-gray-200 border-t-4 border-t-brand-accent">
+      <div class="bg-white shadow-2xl max-w-md w-full transform transition-all relative border-x border-b border-gray-200 border-t-4 border-t-brand-accent animate-pop-in">
         
         <button @click="close" class="absolute top-4 right-4 text-gray-400 hover:text-brand-black transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>

@@ -24,9 +24,10 @@
 
           <!-- Cart Items -->
           <div 
-            v-for="item in cartStore.items" 
+            v-for="(item, index) in cartStore.items" 
             :key="item.product_id"
             class="group bg-white p-3 border border-gray-100 hover:border-gray-200 transition-all duration-200"
+            v-animate-on-scroll="{ delay: index * 100 }"
           >
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
               <div class="col-span-9 flex items-start space-x-4">

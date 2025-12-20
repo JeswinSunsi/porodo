@@ -13,7 +13,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           <!-- Image Gallery -->
-          <div class="space-y-4">
+          <div class="space-y-4" v-animate-on-scroll>
             <div class="relative bg-gray-50 aspect-square overflow-hidden border border-gray-100 flex items-center justify-center group">
               <span v-if="product.original_price" class="absolute top-4 left-4 bg-brand-danger text-white text-xs font-bold px-3 py-1 uppercase tracking-wide z-10">
                 Save {{ discountPercent }}%
@@ -38,7 +38,7 @@
           </div>
 
           <!-- Product Info -->
-          <div class="flex flex-col h-full pt-0">
+          <div class="flex flex-col h-full pt-0" v-animate-on-scroll="{ delay: 200 }">
             <div class="mb-4">
               <div class="flex items-center text-yellow-400 text-sm mb-2">★★★★★</div>
               <h1 class="text-3xl md:text-4xl font-bold text-brand-black mb-4 leading-tight">{{ product.name }}</h1>
@@ -127,7 +127,7 @@
     </section>
 
     <!-- Specifications -->
-    <section v-if="product.specs" class="py-10 bg-gray-50 border-t border-gray-200">
+    <section v-if="product.specs" class="py-10 bg-gray-50 border-t border-gray-200" v-animate-on-scroll>
       <div class="max-w-4xl mx-auto px-4">
         <h3 class="text-lg font-bold mb-6 text-center uppercase tracking-wide">Technical Specifications</h3>
         <div class="bg-white p-6 md:p-8 border border-gray-100">
@@ -157,7 +157,7 @@
       </div>
     </section>
         <section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
-      <div class="flex justify-between items-end mb-8">
+      <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
           <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
           <p class="text-xs md:text-sm text-gray-500">Highest rated tech this week.</p>
@@ -174,13 +174,14 @@
       
       <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
         <ProductCard 
-          v-for="product in products" 
+          v-for="(product, index) in products" 
           :key="product.id" 
           :product="product"
+          v-animate-on-scroll="{ delay: index * 100 }"
         />
       </div>
       
-      <div class="mt-8 text-center">
+      <div class="mt-8 text-center" v-animate-on-scroll>
         <router-link to="/products" class="inline-block bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
           View All Products
         </router-link>

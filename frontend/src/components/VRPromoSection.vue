@@ -5,9 +5,9 @@
         <img 
           src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1000&auto=format&fit=crop" 
           alt="VR Headset" 
-          class="rounded-sm border border-gray-700 w-full object-cover h-[400px] hover:scale-105 transition-transform duration-700"
+          class="rounded-sm border border-gray-700 w-full object-cover h-[400px] hover:scale-105 transition-transform duration-700 animate-float"
         >
-        <div class="absolute -bottom-6 -right-6 bg-brand-accent text-white p-6 w-40 text-center rounded-none hidden md:block shadow-2xl">
+        <div class="absolute -bottom-6 -right-6 bg-brand-accent text-white p-6 w-40 text-center rounded-none hidden md:block shadow-2xl animate-bounce" style="animation-duration: 3s">
           <p class="text-3xl font-bold">30%</p>
           <p class="text-sm font-medium uppercase">Off VR Gear</p>
         </div>
