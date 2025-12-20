@@ -4,12 +4,18 @@ import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
 import AllProductsView from '@/views/AllProductsView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
+import SearchView from '@/views/SearchView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchView
   },
   {
     path: '/products',

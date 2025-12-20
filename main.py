@@ -2,6 +2,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
+import json
+import os
+import difflib
+from datetime import datetime
 
 app = FastAPI(title="TechNova API", description="API for TechNova E-commerce Store")
 
@@ -29,14 +33,6 @@ class Product(BaseModel):
     colors: Optional[List[str]] = None
     badges: Optional[List[str]] = None
 
-class CartItem(BaseModel):
-    product_id: int
-    name: str
-    price: float
-    quantity: int
-    image_url: str
-    selected_color: Optional[str] = None
-
 class Review(BaseModel):
     author: str
     role: Optional[str] = None
@@ -49,115 +45,111 @@ class Promotion(BaseModel):
     code: Optional[str] = None
     discount_percentage: Optional[int] = None
 
+class OrderItem(BaseModel):
+    product_id: int
+    name: str
+    price: float
+    quantity: int
+    image_url: Optional[str] = None
+    selected_color: Optional[str] = None
+
+class Order(BaseModel):
+    name: str
+    address: str
+    city: str
+    houseNumber: str
+    governorate: str
+    items: List[OrderItem]
+    total: float
+    promo_code: Optional[str] = None
+    timestamp: Optional[str] = None
+
+class OrderItemRequest(BaseModel):
+    product_id: int
+    quantity: int
+    selected_color: Optional[str] = None
+
+class OrderRequest(BaseModel):
+    name: str
+    address: str
+    city: str
+    houseNumber: str
+    governorate: str
+    items: List[OrderItemRequest]
+    total: float
+    promo_code: Optional[str] = None
+
 # --- Mock Data ---
 
-products_db = [
-    Product(
-        id=1,
-        name="Sony WH-1000XM5",
-        price=348.00,
-        original_price=399.00,
-        short_description="Noise Cancelling / 30h Bat",
-        description="Experience the next level of silence. The WH-1000XM5 headphones feature our best noise canceling yet, with two processors controlling 8 microphones for unprecedented noise reduction and exceptional call quality.",
-        image_url="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=600&auto=format&fit=crop",
-        category="Audio",
-        specs={
-            "Battery Life": "30 Hours (NC On)",
-            "Weight": "250g",
-            "Bluetooth": "Version 5.2",
-            "Charging": "USB-C (3min = 3hr)",
-            "Driver Unit": "30mm",
-            "Noise Canceling": "Active (Auto NC)"
-        },
-        colors=["Black", "Gray", "Blue"],
-        badges=["Sale"]
-    ),
-    Product(
-        id=2,
-        name="MacBook Air M2",
-        price=1099.00,
-        short_description="Midnight / 256GB SSD",
-        image_url="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=600&auto=format&fit=crop",
-        category="Laptops"
-    ),
-    Product(
-        id=3,
-        name="Apple Watch Ultra",
-        price=799.00,
-        short_description="Titanium Case / 49mm",
-        image_url="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop",
-        category="Wearables",
-        badges=["Hot"]
-    ),
-    Product(
-        id=4,
-        name="JBL Flip 6",
-        price=99.00,
-        short_description="Waterproof / Black",
-        image_url="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop",
-        category="Audio"
-    ),
-    Product(
-        id=5,
-        name="iPhone 15 Pro Max",
-        price=1199.00,
-        short_description="Titanium / 256GB",
-        image_url="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=600&auto=format&fit=crop",
-        category="Smartphones"
-    ),
-    Product(
-        id=6,
-        name="iPad Air 5",
-        price=559.00,
-        short_description="M1 Chip / Space Gray",
-        image_url="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop",
-        category="Tablets",
-        badges=["Refurb"]
-    ),
-    Product(
-        id=7,
-        name="MX Master 3S",
-        price=99.00,
-        short_description="Ergonomic / Silent",
-        image_url="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=600&auto=format&fit=crop",
-        category="Accessories"
-    ),
-    Product(
-        id=8,
-        name="GoPro Hero 12",
-        price=399.00,
-        short_description="5.3K Video / Waterproof",
-        image_url="https://images.unsplash.com/photo-1564466021189-e99b53a5b3f6?q=80&w=600&auto=format&fit=crop",
-        category="Cameras"
-    ),
-    Product(
-        id=9,
-        name="Universal Headphone Stand",
-        price=49.00,
-        short_description="Aluminum Silver",
-        image_url="https://images.unsplash.com/photo-1623998021646-4c31cc9b4743?q=80&w=200&auto=format&fit=crop",
-        category="Accessories"
-    )
-]
+products_db = []
 
-cart_db = [
-    CartItem(
-        product_id=1,
-        name="Sony WH-1000XM5",
-        price=348.00,
-        quantity=1,
-        image_url="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=200&auto=format&fit=crop",
-        selected_color="Midnight Black"
-    ),
-    CartItem(
-        product_id=9,
-        name="Universal Headphone Stand",
-        price=49.00,
-        quantity=1,
-        image_url="https://images.unsplash.com/photo-1623998021646-4c31cc9b4743?q=80&w=200&auto=format&fit=crop",
-        selected_color="Aluminum Silver"
-    )
-]
+def load_products():
+    global products_db
+    try:
+        with open("products.json", "r") as f:
+            data = json.load(f)
+            products_db = [Product(**item) for item in data]
+    except FileNotFoundError:
+        print("products.json not found. Starting with empty product list.")
+        products_db = []
+    except json.JSONDecodeError:
+        print("Error decoding products.json.")
+        products_db = []
+
+load_products()
+
+@app.get("/search", response_model=dict)
+async def search_products(q: str, page: int = 1, limit: int = 10):
+    """
+    Search for products by name or description with pagination.
+    """
+    query = q.lower()
+    all_results = [
+        p for p in products_db
+        if query in p.name.lower() or (p.description and query in p.description.lower())
+    ]
+    
+    # Pagination
+    start = (page - 1) * limit
+    end = start + limit
+    paginated_results = all_results[start:end]
+    
+    return {
+        "items": paginated_results,
+        "total": len(all_results),
+        "page": page,
+        "limit": limit,
+        "pages": (len(all_results) + limit - 1) // limit
+    }
+
+@app.get("/search/suggestions")
+async def search_suggestions(q: str):
+    """
+    Optimized search returning only names/ids with fuzzy matching.
+    """
+    if len(q) < 4:
+        return []
+        
+    query = q.lower()
+    
+    # 1. Exact/Prefix matches
+    matches = [p for p in products_db if query in p.name.lower()]
+    
+    # 2. Fuzzy matches using Levenshtein distance (via difflib)
+    # Only if we don't have many exact matches
+    if len(matches) < 5:
+        all_names = [p.name for p in products_db]
+        # cutoff=0.4 allows for some typos
+        close_matches = difflib.get_close_matches(query, all_names, n=5, cutoff=0.4)
+        
+        existing_ids = {p.id for p in matches}
+        for name in close_matches:
+            product = next((p for p in products_db if p.name == name), None)
+            if product and product.id not in existing_ids:
+                matches.append(product)
+    
+    # Return lightweight response
+    return [{"id": p.id, "name": p.name} for p in matches]
 
 reviews_db = [
     Review(
@@ -216,10 +208,6 @@ def get_product(product_id: int):
         raise HTTPException(status_code=404, detail="Product not found")
     return product
 
-@app.get("/cart", response_model=List[CartItem], tags=["Cart"])
-def get_cart():
-    return cart_db
-
 @app.get("/reviews", response_model=List[Review], tags=["Social Proof"])
 def get_reviews():
     return reviews_db
@@ -241,6 +229,70 @@ def get_home_trending_products_2():
     # Just picking some products for the second section
     trending_ids = [2, 4, 6, 8, 1, 3] 
     return [p for p in products_db if p.id in trending_ids]
+
+@app.post("/api/orders", tags=["Orders"])
+def create_order(order_req: OrderRequest):
+    # Reconstruct full order items from DB
+    full_items = []
+    calculated_subtotal = 0.0
+    
+    for item_req in order_req.items:
+        product = next((p for p in products_db if p.id == item_req.product_id), None)
+        if product:
+            # Calculate item price (handle discounts if any logic existed)
+            # Frontend logic: if quantity >= 2, price = price * 0.9
+            
+            item_price = product.price
+            if item_req.quantity >= 2:
+                item_price = item_price * 0.9
+                
+            item_total = item_price * item_req.quantity
+            calculated_subtotal += item_total
+            
+            full_items.append(OrderItem(
+                product_id=product.id,
+                name=product.name,
+                price=product.price, 
+                quantity=item_req.quantity,
+                image_url=product.image_url,
+                selected_color=item_req.selected_color
+            ))
+        else:
+            raise HTTPException(status_code=400, detail=f"Product with ID {item_req.product_id} not found")
+
+    # Calculate tax (6%)
+    tax = calculated_subtotal * 0.06
+    final_total = calculated_subtotal + tax
+    
+    # Create full Order object
+    order = Order(
+        name=order_req.name,
+        address=order_req.address,
+        city=order_req.city,
+        houseNumber=order_req.houseNumber,
+        governorate=order_req.governorate,
+        items=full_items,
+        total=final_total,
+        promo_code=order_req.promo_code,
+        timestamp=datetime.now().isoformat()
+    )
+    
+    orders_file = "orders.json"
+    orders_data = []
+    
+    if os.path.exists(orders_file):
+        try:
+            with open(orders_file, "r") as f:
+                orders_data = json.load(f)
+        except json.JSONDecodeError:
+            pass
+            
+    orders_data.append(order.dict())
+    
+    with open(orders_file, "w") as f:
+        json.dump(orders_data, f, indent=2)
+        
+    return {"message": "Order placed successfully", "order": order}
 
 if __name__ == "__main__":
     import uvicorn
