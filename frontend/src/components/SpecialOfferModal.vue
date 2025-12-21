@@ -21,6 +21,9 @@
             <div class="absolute top-0 left-0 w-32 h-32 bg-brand-accent/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
             <div class="absolute bottom-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full translate-x-1/2 translate-y-1/2 blur-2xl"></div>
 
+            <!-- Dot Pattern -->
+            <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+
             <div class="relative inline-block">
                 <div class="h-20 w-20 bg-white rounded-full flex items-center justify-center shadow-lg shadow-brand-accent/20 mb-2 mx-auto ring-4 ring-white">
                     <span class="text-2xl font-black text-brand-accent">-15%</span>
@@ -29,7 +32,7 @@
                     LIMITED
                 </div>
             </div>
-            <h3 class="text-xl font-black text-brand-black mt-4 uppercase tracking-tight">Special Offer Unlocked!</h3>
+            <h3 class="text-xl font-black text-brand-black mt-4 uppercase tracking-tight z-50">Special Offer Unlocked!</h3>
         </div>
 
         <div class="p-6 pt-5">
