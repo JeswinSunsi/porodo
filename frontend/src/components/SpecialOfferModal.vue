@@ -44,7 +44,10 @@
               <span class="text-brand-accent">Almost there!</span>
             </div>
             <div class="h-3 w-full bg-gray-200 rounded-sm overflow-hidden">
-              <div class="h-full bg-brand-accent w-1/2 relative rounded-sm">
+              <div 
+                class="h-full bg-brand-accent relative rounded-sm transition-all duration-1000 ease-out"
+                :style="{ width: progressWidth }"
+              >
                 <div class="absolute inset-0 bg-white/30 animate-pulse"></div>
               </div>
             </div>
@@ -84,6 +87,7 @@ const emit = defineEmits(['close'])
 // Countdown Timer Logic
 const timeLeft = ref(180) // 3 minutes in seconds
 let timerInterval
+const progressWidth = ref('0%')
 
 const formattedTime = computed(() => {
   const minutes = Math.floor(timeLeft.value / 60)
@@ -108,8 +112,14 @@ function startTimer() {
 watch(() => props.isOpen, (newValue) => {
   if (newValue) {
     startTimer()
+    // Animate progress bar
+    progressWidth.value = '0%'
+    setTimeout(() => {
+      progressWidth.value = '50%'
+    }, 300)
   } else {
     clearInterval(timerInterval)
+    progressWidth.value = '0%'
   }
 })
 
