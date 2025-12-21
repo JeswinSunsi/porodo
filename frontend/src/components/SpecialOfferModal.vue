@@ -23,7 +23,7 @@
 
             <div class="relative inline-block">
                 <div class="h-20 w-20 bg-white rounded-full flex items-center justify-center shadow-lg shadow-brand-accent/20 mb-2 mx-auto ring-4 ring-white">
-                    <span class="text-2xl font-black text-brand-accent">-20%</span>
+                    <span class="text-2xl font-black text-brand-accent">-15%</span>
                 </div>
                 <div class="absolute -top-2 -right-2 bg-brand-danger text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm animate-bounce">
                     LIMITED
@@ -34,7 +34,7 @@
 
         <div class="p-6 pt-5">
           <p class="text-center text-gray-600 text-sm mb-5">
-            Don't miss out! Add <span class="font-bold text-brand-black">1 more</span> to your cart and get <span class="font-bold text-brand-accent">20% OFF</span> your entire order.
+            Don't miss out! Buy <span class="font-bold text-brand-black">2 products</span> together and get <span class="font-bold text-brand-accent">15% OFF</span> your entire order.
           </p>
 
           <!-- Progress Bar -->
@@ -54,12 +54,8 @@
           <!-- Action Buttons -->
           <div class="space-y-3">
             <button @click="close" class="w-full py-3.5 bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-sm rounded-md shadow-lg shadow-brand-accent/30 hover:shadow-brand-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
-              <span>Add to Cart & Save 20%</span>
+              <span>Let's go</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </button>
-            
-            <button @click="close" class="w-full py-2 text-xs font-medium text-gray-400 hover:text-gray-600 transition-colors">
-              No thanks, I'll pay full price
             </button>
           </div>
           

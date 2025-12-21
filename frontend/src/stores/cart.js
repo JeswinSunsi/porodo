@@ -13,14 +13,12 @@ export const useCartStore = defineStore('cart', () => {
   })
 
   const subtotal = computed(() => {
-    return items.value.reduce((total, item) => {
-      let itemTotal = item.price * item.quantity
-      // Discount logic: 10% off if quantity >= 2
-      if (item.quantity >= 2) {
-        itemTotal = itemTotal * 0.9
-      }
-      return total + itemTotal
-    }, 0)
+    const rawTotal = items.value.reduce((total, item) => total + (item.price * item.quantity), 0)
+    // Discount logic: 15% off entire order if total items >= 2
+    if (itemCount.value >= 2) {
+      return rawTotal * 0.85
+    }
+    return rawTotal
   })
 
   const tax = computed(() => {
@@ -32,7 +30,7 @@ export const useCartStore = defineStore('cart', () => {
   })
 
   const hasDiscount = computed(() => {
-    return items.value.some(item => item.quantity >= 2)
+    return itemCount.value >= 2
   })
 
   function addItem(product, quantity = 1, selectedColor = null) {
@@ -43,8 +41,8 @@ export const useCartStore = defineStore('cart', () => {
 
     if (existingItem) {
       existingItem.quantity += quantity
-      if (existingItem.quantity === 2) {
-        toastStore.showToast(`Discount Unlocked! 10% off ${product.name}s!`, 'success')
+      if (itemCount.value === 2) {
+        toastStore.showToast(`Discount Unlocked! 15% off entire order!`, 'success')
       } else {
         toastStore.showToast(`${product.name} added to cart`, 'success')
       }
@@ -60,10 +58,16 @@ export const useCartStore = defineStore('cart', () => {
       })
 
       if (wasEmpty) {
-        showSpecialOffer.value = true
-        toastStore.showToast(`${product.name} added! Buy 2 to save 10%!`, 'success', 5000)
+        setTimeout(() => {
+          showSpecialOffer.value = true
+        }, 3000)
+        toastStore.showToast(`${product.name} added! Buy 2 to save 15%!`, 'success', 5000)
       } else {
-        toastStore.showToast(`${product.name} added to cart`, 'success')
+        if (itemCount.value === 2) {
+          toastStore.showToast(`Discount Unlocked! 15% off entire order!`, 'success')
+        } else {
+          toastStore.showToast(`${product.name} added to cart`, 'success')
+        }
       }
     }
   }
@@ -71,11 +75,12 @@ export const useCartStore = defineStore('cart', () => {
   function updateQuantity(productId, change) {
     const item = items.value.find(item => item.product_id === productId)
     if (item) {
-      const oldQuantity = item.quantity
+      const oldTotalCount = itemCount.value
       item.quantity = Math.max(1, item.quantity + change)
+      const newTotalCount = items.value.reduce((t, i) => t + i.quantity, 0)
 
-      if (oldQuantity < 2 && item.quantity >= 2) {
-        toastStore.showToast(`Discount Unlocked! 10% off ${item.name}s!`, 'success')
+      if (oldTotalCount < 2 && newTotalCount >= 2) {
+        toastStore.showToast(`Discount Unlocked! 15% off entire order!`, 'success')
       }
     }
   }
