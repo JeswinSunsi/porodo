@@ -5,7 +5,7 @@
       :key="index"
       :class="['absolute inset-0 transition-opacity duration-1000 ease-in-out', currentSlide === index ? 'opacity-100' : 'opacity-0']"
     >
-      <img :src="slide.image" :alt="slide.alt" class="w-full h-full object-cover animate-float">
+      <img :src="slide.image" :alt="slide.alt" class="w-full h-full object-cover">
     </div>
   </div>
 </template>
