@@ -183,13 +183,13 @@
 
     <!-- Removal Confirmation Modal -->
     <div v-if="showRemoveModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-black/60 backdrop-blur-sm transition-all duration-300">
-      <div class="bg-white shadow-2xl max-w-sm w-full transform transition-all border border-gray-100 relative overflow-hidden">
+      <div class="bg-white rounded-lg shadow-2xl max-w-sm w-full transform transition-all border border-gray-100 relative overflow-hidden">
         <!-- Decorative top bar -->
-        <div class="h-1.5 w-full bg-brand-black"></div>
+        <div class="h-1.5 w-full bg-brand-accent"></div>
         
         <div class="p-8 text-center">
-          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-gray-50 mb-6 border border-gray-100">
-            <svg class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-brand-accent/10 mb-6 border border-brand-accent/10">
+            <svg class="h-8 w-8 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </div>
@@ -210,10 +210,10 @@
           </div>
 
           <div class="space-y-3">
-            <button @click="cancelRemove" class="w-full py-3.5 bg-brand-black text-white font-bold uppercase tracking-wider hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 hover:shadow-xl">
+            <button @click="cancelRemove" class="w-full py-3.5 bg-brand-accent text-white font-bold uppercase tracking-wider hover:bg-brand-accentHover transition-all shadow-lg shadow-brand-accent/20 hover:shadow-xl rounded-md">
               Keep Item
             </button>
-            <button @click="confirmRemove" class="w-full py-2 text-xs font-bold text-gray-400 uppercase tracking-wider hover:text-red-600 transition-colors">
+            <button @click="confirmRemove" class="w-full py-2 text-xs font-bold text-gray-400 uppercase tracking-wider hover:text-red-600 transition-colors rounded-md">
               Remove Item
             </button>
           </div>
