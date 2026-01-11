@@ -7,7 +7,7 @@ import os
 import difflib
 from datetime import datetime
 
-app = FastAPI(title="TechNova API", description="API for TechNova E-commerce Store")
+app = FastAPI(title="PhoneMate API", description="API for PhoneMate E-commerce Store")
 
 # CORS middleware for Vue frontend
 app.add_middleware(
@@ -195,7 +195,7 @@ promotions_db = [
 
 @app.get("/", tags=["General"])
 def read_root():
-    return {"message": "Welcome to TechNova API"}
+    return {"message": "Welcome to PhoneMate API"}
 
 @app.get("/products", response_model=List[Product], tags=["Products"])
 def get_products():

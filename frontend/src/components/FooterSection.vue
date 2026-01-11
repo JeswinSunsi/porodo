@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        <p>&copy; 2025 TechNova Inc. All rights reserved.</p>
+        <p>&copy; 2025 PhoneMate Inc. All rights reserved.</p>
         <div class="flex space-x-4 mt-4 md:mt-0">
           <a href="#" class="hover:text-brand-black transition-colors">Privacy</a>
           <a href="#" class="hover:text-brand-black transition-colors">Terms</a>

@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center h-16">
         <router-link to="/" class="flex-shrink-0 flex items-center cursor-pointer group">
           <span class="text-2xl font-bold tracking-tighter group-hover:opacity-80 transition-opacity">
-            Tech<span class="text-brand-accent">Nova</span>.
+            Phone<span class="text-brand-accent">mate</span>.
           </span>
         </router-link>
 

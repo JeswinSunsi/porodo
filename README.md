@@ -1,4 +1,4 @@
-# TechNova - E-commerce Store
+# PhoneMate - E-commerce Store
 
 A full-stack e-commerce application with a FastAPI backend and Vue.js (Vite) frontend.
 

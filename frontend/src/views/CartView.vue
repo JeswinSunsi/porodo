@@ -174,7 +174,7 @@
             <div class="mt-6 border-t border-gray-200 pt-6">
               <h3 class="text-sm font-bold text-brand-black mb-2">Need Help?</h3>
               <p class="text-xs text-gray-500 mb-1">Call us: <a href="tel:+1234567890" class="text-brand-black hover:underline">+1 (234) 567-890</a></p>
-              <p class="text-xs text-gray-500">Email: <a href="mailto:support@chance.com" class="text-brand-black hover:underline">support@chance.com</a></p>
+              <p class="text-xs text-gray-500">Email: <a href="mailto:support@phonemate.com" class="text-brand-black hover:underline">support@phonemate.com</a></p>
             </div>
           </div>
         </div>

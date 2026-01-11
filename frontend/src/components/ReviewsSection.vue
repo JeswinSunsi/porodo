@@ -2,8 +2,8 @@
   <section class="py-12 bg-brand-gray border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">Trusted by Tech Enthusiasts</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto text-sm">See what our community has to say about their experience with TechNova.</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">Trusted by Phone Enthusiasts</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto text-sm">See what our community has to say about their experience with PhoneMate.</p>
       </div>
       
       <div v-if="loading" class="flex justify-center py-8">

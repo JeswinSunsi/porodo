@@ -8,7 +8,7 @@
       <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
           <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
-          <p class="text-xs md:text-sm text-gray-500">Highest rated tech this week.</p>
+          <p class="text-xs md:text-sm text-gray-500">Highest rated Phone this week.</p>
         </div>
         <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
           View All 
