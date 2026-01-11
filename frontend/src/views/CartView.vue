@@ -79,7 +79,7 @@
                 </svg>
               </div>
               <div>
-                <h4 class="font-bold text-xs uppercase text-brand-black">30-Day Returns</h4>
+                <h4 class="font-bold text-xs uppercase text-brand-black">14-Day Returns</h4>
                 <p class="text-[11px]">No questions asked</p>
               </div>
             </div>
@@ -105,7 +105,7 @@
                 </svg>
               </div>
               <div>
-                <h4 class="font-bold text-xs uppercase text-brand-black">2-Year Warranty</h4>
+                <h4 class="font-bold text-xs uppercase text-brand-black">1-Year Warranty</h4>
                 <p class="text-[11px]">On all electronics</p>
               </div>
             </div>
@@ -193,10 +193,10 @@
 
             <div class="mt-8 border-t border-gray-100 pt-6">
               <h3 class="text-[10px] font-black text-brand-black uppercase tracking-widest mb-3">Support</h3>
-              <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-wider">Phone: <a href="tel:+1234567890"
-                  class="text-brand-black hover:underline font-bold">+1 (234) 567-890</a></p>
+              <p class="text-[10px] text-gray-500 mb-1 uppercase tracking-wider">Phone: <a href="tel:+96891515555"
+                  class="text-brand-black hover:underline font-bold">+968 9151 5555</a></p>
               <p class="text-[10px] text-gray-500 uppercase tracking-wider">Email: <a href="mailto:support@phonemate.com"
-                  class="text-brand-black hover:underline font-bold">support@phonemate.com</a></p>
+                  class="text-brand-black hover:underline font-bold">support@phonemate.om</a></p>
             </div>
           </div>
         </div>

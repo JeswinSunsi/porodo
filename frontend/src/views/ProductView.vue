@@ -69,6 +69,7 @@
                     :title="color"
                   ></button>
                 </div>
+                <p v-if="selectedColor" class="mt-4 text-sm text-gray-500 font-medium">{{ selectedColor }}</p>
               </div>
 
               <!-- Quantity & Add to Cart -->
