@@ -4,11 +4,12 @@
       <div class="flex flex-col md:flex-row gap-8">
         
         <!-- Sidebar Filters -->
-        <aside class="w-full md:w-64 flex-shrink-0" v-show="showFilters">
-          <div class="sticky top-24 space-y-8">
-            
-            <!-- Categories Filter -->
-            <div>
+        <Transition name="slide">
+          <aside class="w-full md:w-64 flex-shrink-0" v-show="showFilters">
+            <div class="sticky top-24 space-y-8">
+              
+              <!-- Categories Filter -->
+              <div>
               <h3 class="text-lg font-bold mb-4 border-b pb-2">Categories</h3>
               <div class="space-y-2">
                 <label v-for="category in categories" :key="category" class="flex items-center space-x-2 cursor-pointer group">
@@ -52,6 +53,7 @@
             </button>
           </div>
         </aside>
+        </Transition>
 
         <!-- Main Content -->
         <main class="flex-1">
@@ -204,3 +206,58 @@ const clearFilters = () => {
   sortBy.value = 'featured'
 }
 </script>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Desktop: Slide horizontally and shrink width */
+@media (min-width: 768px) {
+  .slide-enter-from,
+  .slide-leave-to {
+    max-width: 0;
+    opacity: 0;
+    margin-right: -2rem; /* Offsets the gap-8 */
+    transform: translateX(-20px);
+  }
+
+  .slide-enter-to,
+  .slide-leave-from {
+    max-width: 16rem; /* matches w-64 */
+    opacity: 1;
+    margin-right: 0;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile: Slide vertically and shrink height */
+@media (max-width: 767px) {
+  .slide-enter-from,
+  .slide-leave-to {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: -1.5rem; /* Offsets the gap-8 roughly */
+  }
+
+  .slide-enter-to,
+  .slide-leave-from {
+    max-height: 1000px; /* Large enough for content */
+    opacity: 1;
+    margin-bottom: 0;
+  }
+}
+
+/* Prevent layout jump of internal content */
+aside > div {
+  width: 16rem;
+}
+
+@media (max-width: 767px) {
+  aside > div {
+    width: 100%;
+  }
+}
+</style>
