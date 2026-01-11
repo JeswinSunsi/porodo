@@ -32,7 +32,7 @@
         <img 
           src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
           alt="Search Banner" 
-          class="w-full h-48 object-cover rounded-lg shadow-md"
+          class="w-full h-48 object-cover rounded-md shadow-md"
         />
       </div>
 
@@ -111,7 +111,7 @@
       </div>
       
       <div v-else-if="searchQuery.length > 0 && searchQuery.length < 4" class="mt-4 text-sm text-gray-400 px-2">
-        Type to search...
+        Keep typing to search...
       </div>
     </div>
   </div>
