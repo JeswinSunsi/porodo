@@ -1,7 +1,10 @@
 <template>
   <router-link 
     :to="`/product/${product.id}`" 
-    class="group border border-gray-200 p-3 md:p-4 bg-white hover:border-brand-black transition-all duration-300 ease-luxe hover:shadow-xl hover:-translate-y-1 block"
+    :class="[
+      cardBorderClass,
+      'group border p-3 md:p-4 bg-white hover:border-brand-black transition-all duration-300 ease-luxe hover:shadow-xl hover:-translate-y-1 block'
+    ]"
   >
     <div class="relative bg-gray-50 aspect-square mb-3 flex items-center justify-center overflow-hidden">
       <span 
@@ -50,10 +53,19 @@ const cartStore = useCartStore()
 
 const badgeClass = computed(() => {
   const badge = props.product.badges?.[0]?.toLowerCase()
-  if (badge === 'sale') return 'bg-brand-black text-white'
+  if (badge === 'sale') return 'bg-green-600 text-white'
   if (badge === 'hot') return 'bg-brand-danger text-white'
   if (badge === 'refurb') return 'bg-gray-100 text-gray-600 border border-gray-200'
   return 'bg-brand-black text-white'
+})
+
+const cardBorderClass = computed(() => {
+  const badge = props.product.badges?.[0]?.toLowerCase()
+  if (!badge) return 'border-gray-200'
+  if (badge === 'sale') return 'border-green-600'
+  if (badge === 'hot') return 'border-brand-danger'
+  if (badge === 'refurb') return 'border-gray-200'
+  return 'border-brand-black'
 })
 
 function formatPrice(price) {

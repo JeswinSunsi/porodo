@@ -175,7 +175,7 @@ reviews_db = [
 promotions_db = [
     Promotion(
         title="Flash Sale",
-        description="Get 20% OFF all smartphones.",
+        description="Get 20% OFF all powerbanks.",
         code="TECH20",
         discount_percentage=20
     ),
