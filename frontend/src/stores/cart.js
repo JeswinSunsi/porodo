@@ -4,6 +4,8 @@ import { useToastStore } from './toast'
 
 export const useCartStore = defineStore('cart', () => {
   const items = ref([])
+  const deliveryMethod = ref('delivery')
+  const selectedStore = ref(null)
   const loading = ref(false)
   const toastStore = useToastStore()
 
@@ -66,6 +68,8 @@ export const useCartStore = defineStore('cart', () => {
 
   return {
     items,
+    deliveryMethod,
+    selectedStore,
     loading,
     itemCount,
     subtotal,

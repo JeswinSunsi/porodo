@@ -129,13 +129,60 @@
           <div class="bg-white p-6 border border-gray-200 sticky top-24 shadow-sm">
             <h2 class="text-xs font-black text-brand-black uppercase tracking-[0.2em] mb-6 pb-2 border-b border-gray-100">Order Summary</h2>
 
+            <!-- Delivery Options -->
+            <div class="mb-6">
+              <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Delivery Method</h3>
+              <div class="grid grid-cols-2 gap-2 mb-4">
+                <button 
+                  @click="cartStore.deliveryMethod = 'delivery'"
+                  type="button"
+                  :class="[
+                    'py-2 px-4 text-xs font-bold uppercase tracking-wider border transition-all',
+                    cartStore.deliveryMethod === 'delivery' 
+                      ? 'border-brand-black bg-brand-black text-white' 
+                      : 'border-gray-200 text-gray-500 hover:border-gray-300'
+                  ]"
+                >
+                  Delivery
+                </button>
+                <button 
+                  @click="cartStore.deliveryMethod = 'pickup'"
+                  type="button"
+                  :class="[
+                    'py-2 px-4 text-xs font-bold uppercase tracking-wider border transition-all',
+                    cartStore.deliveryMethod === 'pickup' 
+                      ? 'border-brand-black bg-brand-black text-white' 
+                      : 'border-gray-200 text-gray-500 hover:border-gray-300'
+                  ]"
+                >
+                  Pick Up
+                </button>
+              </div>
+
+              <!-- Store Selector -->
+              <div v-if="cartStore.deliveryMethod === 'pickup'" class="animate-fade-in">
+                 <select 
+                   v-model="cartStore.selectedStore"
+                   class="w-full bg-brand-gray border-none text-xs font-bold p-3 focus:ring-1 focus:ring-brand-black outline-none transition uppercase tracking-wide mb-2"
+                 >
+                   <option :value="null" disabled>Select a Store</option>
+                   <option v-for="store in stores" :key="store.id" :value="store.id">
+                     {{ store.name }}
+                   </option>
+                 </select>
+                 <p v-if="cartStore.selectedStore" class="text-[10px] text-gray-500 pl-1">
+                   {{ stores.find(s => s.id === cartStore.selectedStore)?.address }}
+                 </p>
+              </div>
+            </div>
+
             <div class="space-y-4 text-xs font-medium text-gray-500 mb-8">
               <div class="flex justify-between items-center">
                 <span class="uppercase tracking-wider">Subtotal</span>
                 <span class="text-sm font-bold text-brand-black">${{ formatPrice(cartStore.subtotal) }}</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="uppercase tracking-wider">Shipping</span>
+                <span class="uppercase tracking-wider">{{ cartStore.deliveryMethod === 'pickup' ? 'Store Pickup' : 'Shipping' }}</span>
                 <span class="text-brand-accent font-bold uppercase">FREE</span>
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-50">
@@ -306,6 +353,13 @@ const router = useRouter()
 const discountCode = ref('')
 const showRemoveModal = ref(false)
 const itemToRemoveId = ref(null)
+
+const stores = [
+  { id: 1, name: 'Downtown Flagship', address: '123 Main St, Downtown' },
+  { id: 2, name: 'Northside Mall', address: '456 North Ave, Northside' },
+  { id: 3, name: 'West End Plaza', address: '789 West Blvd, West End' },
+  { id: 4, name: 'Airport Branch', address: '101 Airport Rd, Terminal 2' }
+]
 
 function formatPrice(price) {
   return price.toFixed(2)
