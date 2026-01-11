@@ -111,7 +111,7 @@
       </div>
       
       <div v-else-if="searchQuery.length > 0 && searchQuery.length < 4" class="mt-4 text-sm text-gray-400 px-2">
-        Type at least 4 characters to search...
+        Type to search...
       </div>
     </div>
   </div>

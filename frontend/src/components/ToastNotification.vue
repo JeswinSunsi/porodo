@@ -26,8 +26,7 @@
               </svg>
             </div>
             <div class="ml-3 w-0 flex-1 pt-0.5">
-              <p class="text-sm font-medium text-gray-900">
-                {{ toast.message }}
+              <p class="text-sm font-normal text-gray-900" v-html="toast.message">
               </p>
             </div>
             <div class="ml-4 flex-shrink-0 flex">

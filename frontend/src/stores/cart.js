@@ -30,7 +30,7 @@ export const useCartStore = defineStore('cart', () => {
 
     if (existingItem) {
       existingItem.quantity += quantity
-      toastStore.showToast(`${product.name} added to cart`, 'success')
+      toastStore.showToast(`<span class="font-bold">${product.name}</span> added to cart`, 'success')
     } else {
       items.value.push({
         product_id: product.id,
@@ -42,7 +42,7 @@ export const useCartStore = defineStore('cart', () => {
         tag: product.badges && product.badges.length > 0 ? product.badges[0] : null
       })
 
-      toastStore.showToast(`${product.name} added to cart`, 'success')
+      toastStore.showToast(`<span class="font-bold">${product.name}</span> added to cart`, 'success')
     }
   }
 
