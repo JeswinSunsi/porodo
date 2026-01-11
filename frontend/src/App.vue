@@ -7,7 +7,6 @@
     </main>
     <FooterSection />
     <ToastNotification />
-    <SpecialOfferModal :isOpen="cartStore.showSpecialOffer" @close="closeSpecialOffer" />
   </div>
 </template>
 
@@ -18,15 +17,10 @@ import NavBar from '@/components/NavBar.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import PromoBanner from '@/components/PromoBanner.vue'
 import ToastNotification from '@/components/ToastNotification.vue'
-import SpecialOfferModal from '@/components/SpecialOfferModal.vue'
 import { getPromotions } from '@/services/api'
 
 const cartStore = useCartStore()
 const activePromotion = ref(null)
-
-function closeSpecialOffer() {
-  cartStore.showSpecialOffer = false
-}
 
 onMounted(async () => {
   try {

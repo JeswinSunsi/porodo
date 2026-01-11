@@ -31,12 +31,14 @@
           >
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
               <div class="col-span-9 flex items-start space-x-4">
-                <div class="bg-gray-50 w-24 h-24 flex-shrink-0 flex items-center justify-center border border-gray-100">
+                <router-link :to="`/product/${item.product_id}`" class="bg-gray-50 w-24 h-24 flex-shrink-0 flex items-center justify-center border border-gray-100 hover:opacity-80 transition-opacity">
                   <img :src="item.image_url" :alt="item.name" class="w-20 h-20 object-contain mix-blend-multiply">
-                </div>
+                </router-link>
                 <div class="flex flex-col space-y-2 w-full">
                   <div class="flex justify-between items-start">
-                    <h3 class="font-bold text-brand-black text-sm sm:text-base pr-2">{{ item.name }}</h3>
+                    <router-link :to="`/product/${item.product_id}`">
+                      <h3 class="font-bold text-brand-black text-sm sm:text-base pr-2 hover:text-brand-accent transition-colors">{{ item.name }}</h3>
+                    </router-link>
                     <span v-if="item.tag" class="text-[10px] font-bold px-1.5 py-0.5 uppercase bg-orange-100 text-orange-600 rounded whitespace-nowrap">{{ item.tag }}</span>
                   </div>
                   <p class="text-xs text-gray-500">Color: {{ item.selected_color || 'Default' }}</p>
