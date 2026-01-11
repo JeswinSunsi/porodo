@@ -5,35 +5,37 @@
     
     <!-- Trending Products Section -->
     <section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
-      <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Deals</h2>
-          <p class="text-xs md:text-sm text-gray-500">Latest price drops of the week.</p>
-        </div>
-        <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
-          View All 
-          <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </router-link>
-      </div>
-
       <div v-if="loading" class="text-center py-12 text-gray-500">Loading products...</div>
       
-      <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-        <ProductCard 
-          v-for="(product, index) in products" 
-          :key="product.id" 
-          :product="product"
-          v-animate-on-scroll="{ delay: index * 100 }"
-        />
-      </div>
-      
-      <div class="mt-8 text-center" v-animate-on-scroll>
-        <router-link to="/products" class="inline-block bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
-          View All Products
-        </router-link>
-      </div>
+      <template v-else>
+        <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Deals</h2>
+            <p class="text-xs md:text-sm text-gray-500">Latest price drops of the week.</p>
+          </div>
+          <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
+            View All 
+            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </router-link>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <ProductCard 
+            v-for="(product, index) in products" 
+            :key="product.id" 
+            :product="product"
+            v-animate-on-scroll="{ delay: index * 100 }"
+          />
+        </div>
+        
+        <div class="mt-8 text-center" v-animate-on-scroll>
+          <router-link to="/products" class="inline-block bg-gray-100 text-brand-black px-8 py-3 text-sm font-semibold hover:bg-gray-200 transition-colors rounded-sm hover:shadow-md">
+            View All Products
+          </router-link>
+        </div>
+      </template>
     </section>
 
     <VRPromoSection v-animate-on-scroll />
