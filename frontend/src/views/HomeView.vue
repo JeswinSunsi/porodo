@@ -7,8 +7,8 @@
     <section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
       <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
-          <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
-          <p class="text-xs md:text-sm text-gray-500">Highest rated Phone this week.</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Deals</h2>
+          <p class="text-xs md:text-sm text-gray-500">Latest price drops of the week.</p>
         </div>
         <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
           View All 
@@ -42,8 +42,8 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-8">
       <div class="flex justify-between items-end mb-8" v-animate-on-scroll>
         <div>
-          <h2 class="text-2xl md:text-3xl font-bold mb-2">Trending Now</h2>
-          <p class="text-xs md:text-sm text-gray-500">More top picks for you.</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">Limited Stock</h2>
+          <p class="text-xs md:text-sm text-gray-500">Grab it before it's gone.</p>
         </div>
         <router-link to="/products" class="inline-flex items-center text-xs md:text-sm font-semibold border-b border-brand-black pb-0.5 hover:text-brand-accent hover:border-brand-accent transition-colors group">
           View All 
