@@ -53,6 +53,13 @@
             <div class="bg-gray-50 p-4 border border-gray-200 rounded text-center">
               <p class="text-brand-black font-medium">Pay with Cash or Card on Delivery.</p>
               <p class="text-sm text-gray-500 mt-1">You can pay using cash or card when your order arrives.</p>
+              
+              <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-center gap-2 text-green-700">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                   <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm4.45 6.45l-4.25 4.25a.75.75 0 01-1.06 0l-1.75-1.75a.75.75 0 011.06-1.06l1.22 1.22 3.72-3.72a.75.75 0 011.06 1.06z" clip-rule="evenodd" />
+                 </svg>
+                 <span class="text-sm font-semibold">100% Original &amp; Assured</span>
+              </div>
             </div>
           </div>
 

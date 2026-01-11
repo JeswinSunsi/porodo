@@ -136,7 +136,7 @@
               </div>
               <div class="flex justify-between items-center">
                 <span class="uppercase tracking-wider">Shipping</span>
-                <span class="text-brand-accent font-bold uppercase">Complimentary</span>
+                <span class="text-brand-accent font-bold uppercase">FREE</span>
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-50">
                 <span class="uppercase tracking-wider">Estimated Tax</span>
