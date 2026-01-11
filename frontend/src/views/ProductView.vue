@@ -149,7 +149,7 @@
       <!-- Specifications -->
       <section v-if="product.specs" class="py-10 bg-gray-50 border-t border-gray-200" v-animate-on-scroll>
         <div class="max-w-4xl mx-auto px-4">
-          <h3 class="text-lg font-bold mb-6 text-center uppercase tracking-wide">Phonenical Specifications</h3>
+          <h3 class="text-lg font-bold mb-6 text-center uppercase tracking-wide">Technical Specifications</h3>
           <div class="bg-white p-6 md:p-8 border border-gray-100">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
               <div class="space-y-4">
