@@ -15,17 +15,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://i.ibb.co/r2YvjkFh/22.png',
     alt: 'Phone Banner 1'
   },
   {
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://i.ibb.co/v6r7XwSK/Yann.png',
     alt: 'Phone Banner 2'
   },
-  {
-    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=2070&auto=format&fit=crop',
-    alt: 'Phone Banner 3'
-  }
 ]
 
 const currentSlide = ref(0)

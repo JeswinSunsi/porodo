@@ -1,15 +1,15 @@
 <template>
-  <section class="py-10 bg-white border-b border-gray-100">
+  <section class="py-4 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4">
         <div 
           v-for="(feature, index) in features" 
           :key="index"
-          class="flex flex-col items-center text-center p-6 group cursor-default"
+          class="flex flex-col items-center text-center p-3 group cursor-default"
           :class="featureBorderClass(index)"
         >
-          <div class="mb-4 text-blue-900 group-hover:text-brand-accent transition-colors duration-300 transform group-hover:scale-110">
-            <component :is="feature.icon" class="w-8 h-8" />
+          <div class="mb-2 text-blue-900 group-hover:text-brand-accent transition-colors duration-300 transform group-hover:scale-110">
+            <component :is="feature.icon" class="w-6 h-6" />
           </div>
           <h3 class="font-bold text-sm text-brand-black uppercase tracking-wide mb-1">{{ feature.title }}</h3>
           <p class="text-xs text-gray-500 font-medium">{{ feature.description }}</p>
@@ -56,9 +56,9 @@ const ReturnsIcon = {
 
 const features = [
   { title: 'Fast Delivery', description: 'Same day dispatch', icon: FastDeliveryIcon },
-  { title: '2 Year Warranty', description: 'On all electronics', icon: WarrantyIcon },
+  { title: '1 Year Warranty', description: 'On all electronics', icon: WarrantyIcon },
   { title: 'Payment Options', description: 'Cash/Card on Delivery', icon: SecurePaymentIcon },
-  { title: 'Easy Returns', description: '30-day policy', icon: ReturnsIcon }
+  { title: 'Easy Returns', description: '14-day policy', icon: ReturnsIcon }
 ]
 
 function featureBorderClass(index) {
